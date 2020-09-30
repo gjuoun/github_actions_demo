@@ -22,9 +22,9 @@ jobs:
 
     - name: Set the value
       run: |
-        git rev-parse --short HEAD >> $GIT_SHORT_COMMIT_TEST
-        echo $GIT_SHORT_COMMIT_TEST
+        echo "output=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
     
     - name: test the value
       run: |
-        echo $GIT_SHORT_COMMIT_TEST
+        echo $output
