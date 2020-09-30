@@ -10,7 +10,8 @@ on:
     branches: [ master ]
 
 env: 
-  GIT_SHORT_COMMIT: abcde
+  DOCKER_IMAGE: someplace
+  GIT_SHORT_COMMIT: placeholder
 
 
 jobs:
@@ -20,12 +21,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Set the value
+    - name: Prepare env vars
       run: |
         echo "GIT_SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+        echo "DOCKER_IMAGE=$DOCKER_IMAGE:$GIT_SHORT_COMMIT" >> $GITHUB_ENV
         
 
     
     - name: test the value
       run: |
         echo $GIT_SHORT_SHA
+        echo $DOCKER_IMAGE
