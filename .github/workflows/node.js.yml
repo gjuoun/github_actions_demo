@@ -22,5 +22,5 @@ jobs:
 
     - name: Set the value
       run: |
-        echo "HELLOWORLD" >> $GIT_SHORT_COMMIT
+        export $GIT_SHORT_COMMIT=HELLOWORLD
         echo $GIT_SHORT_COMMIT
