@@ -22,5 +22,5 @@ jobs:
 
     - name: Set the value
       run: |
-        export GIT_SHORT_COMMIT=HELLOWORLD
+        git rev-parse --short HEAD >> $GIT_SHORT_COMMIT
         echo $GIT_SHORT_COMMIT
