@@ -22,9 +22,10 @@ jobs:
 
     - name: Set the value
       run: |
-        echo "output=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+        echo "GIT_SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+        
 
     
     - name: test the value
       run: |
-        echo $output
+        echo $GIT_SHORT_SHA
