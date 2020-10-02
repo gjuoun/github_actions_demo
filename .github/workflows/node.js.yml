@@ -33,7 +33,6 @@ jobs:
           echo ${{github.ref}}
 
       - name: Contains test
-        run: 
-          echo "good sprint!"
-        if： contains(github.ref, 'sprint')
+        run: echo "good sprint!"
+        if: contains(github.ref, 'sprint')
         
