@@ -23,16 +23,18 @@ jobs:
       - name: Prepare env vars
         run: |
           export GIT_SHORT_SHA=$(git rev-parse --short HEAD)
+          export GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
           echo "GIT_SHORT_SHA=$GIT_SHORT_SHA" >> $GITHUB_ENV
+          echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
           echo "DOCKER_IMAGE=$DOCKER_IMAGE:$GIT_SHORT_SHA" >> $GITHUB_ENV
 
       - name: test the value
         run: |
           echo $GIT_SHORT_SHA
           echo $DOCKER_IMAGE
-          echo ${{github.ref}}
+          echo $GIT_BRANCH
 
       - name: Contains test
-        run: echo "good sprint!"
-        if: contains(github.ref, 'sprint')
+        run: echo "good master!"
+        if: contains(env.GIT_BRANCH, 'master')
         
