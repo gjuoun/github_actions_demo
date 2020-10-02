@@ -36,5 +36,5 @@ jobs:
 
       - name: Contains test
         run: echo "good master!"
-        if: startsWith(env.GIT_BRANCH, 'master')
+        if: startsWith(env.GIT_BRANCH, 'master') && contains(env.GIT_BRANCH, 'master')
         
